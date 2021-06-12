@@ -519,6 +519,10 @@ int ipmiPopulateFruAreas(uint8_t* fruData, const size_t dataLen,
             {
                 areaLen = areaHeader[2] + IPMI_FRU_MULTIREC_HDR_BYTES;
             }
+            else if (fruEntry == IPMI_FRU_INTERNAL_OFFSET)
+            {
+                areaLen = (IPMI_FRU_CHASSIS_OFFSET - IPMI_FRU_INTERNAL_OFFSET) * IPMI_EIGHT_BYTES;
+            }
             else
             {
                 areaLen = areaHeader[1] * IPMI_EIGHT_BYTES;
